@@ -1,0 +1,14 @@
+{
+  "name": "canvas-flowchart",
+  "version": "1.4.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lee",
+  "license": "ISC",
+  "__npminstall_done": "Wed Jun 19 2019 11:07:44 GMT+0800 (GMT+08:00)",
+  "_from": "canvas-flowchart@1.0.0",
+  "_resolved": "https://registry.npm.taobao.org/canvas-flowchart/download/canvas-flowchart-1.0.0.tgz?cache=0&sync_timestamp=1560913637501&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcanvas-flowchart%2Fdownload%2Fcanvas-flowchart-1.0.0.tgz"
+}
