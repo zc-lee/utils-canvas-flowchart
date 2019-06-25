@@ -48,8 +48,11 @@ new canvas({
     // 设置颜色
     options = {
         type: "2d",
+        // 使用默认按钮
         useBtn: true,
+        // 线条拖拽
         dragLine: true,
+        // 编辑
         edit: true,
         // 函数节流帧数
         frame: 60,
