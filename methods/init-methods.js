@@ -11,12 +11,12 @@ export default class Init {
             delete: 'deleteItem',
             connect: 'connectItem',
             choose: 'chooseOne'
-        }
+        }, { This } = this;
         for (let [key, val] of Object.entries(this.methodsName)) {
-            window[val] = this[metchKeys[key]].bind(this)
+            This[val] = this[metchKeys[key]].bind(this)
             console.warn(`window添加${key}:${this.checkAddMethodToWindow(val)}`)
         }
-        window.onkeydown = (e) => {
+        This.onkeydown = (e) => {
             // console.log('keydown:', e.key)
             if (e.key == 'Delete' || e.key == 'Backspace') {
                 this.delete(null)
@@ -24,7 +24,8 @@ export default class Init {
         }
     }
     checkAddMethodToWindow(key) {
-        return Object.keys(window).some(v => v == key)
+        let {This}=this;
+        return Object.keys(This).some(v => v == key)
     }
     /**
      * @method
@@ -53,12 +54,12 @@ export default class Init {
             let btns = document.getElementsByClassName('canvas-btn')
             for (let i = 0; i < btns.length; i++) {
                 btns[i].style.cssText = "border: 1px solid #808080;padding: 3px;width: 80px;cursor: pointer;"
-                btns[i].style.background=this.btnState==btns[i].id?'#ccc':null;
-                btns[i].onmouseover=()=>{
-                    btns[i].style.background='#ccc';
+                btns[i].style.background = this.btnState == btns[i].id ? '#ccc' : null;
+                btns[i].onmouseover = () => {
+                    btns[i].style.background = '#ccc';
                 }
-                btns[i].onmouseout=()=>{
-                    btns[i].style.background=this.btnState==btns[i].id?'#ccc':null;
+                btns[i].onmouseout = () => {
+                    btns[i].style.background = this.btnState == btns[i].id ? '#ccc' : null;
                 }
             }
         }

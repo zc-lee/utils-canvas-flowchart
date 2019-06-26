@@ -18,6 +18,8 @@ new canvas({
 {
     // 容器id
     id = 'Canvas',
+    // 函数注入目标 @click需注入this   onclick无需注入
+    This = window,
     style = {
         width: 1000,
         height: 800,

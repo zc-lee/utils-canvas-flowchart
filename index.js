@@ -38,6 +38,8 @@ export default class Canvas extends Functions {
     constructor({
         // 容器id
         id = 'Canvas',
+        // 函数注入目标 @click需注入this   onclick无需注入
+        This = window,
         style = {},
         // 自定义按钮注入事件名称
         methodsName = {},
@@ -49,7 +51,8 @@ export default class Canvas extends Functions {
         options = {},
         // 元素集合
         rects = [],
-        lines = []
+        lines = [],
+
     }) {
         super()
         let defaultStyle = {
@@ -91,6 +94,7 @@ export default class Canvas extends Functions {
         Object.assign(defaultMethods, methodsName)
         Object.assign(this, {
             id,
+            This,
             style: defaultStyle,
             options: defaultOptions,
             methodsName: defaultMethods,
@@ -117,7 +121,7 @@ export default class Canvas extends Functions {
             // 新增连接线
             lineFrom: null, // 有则[fromId,toId] 无则null 
             btnState: 'choose',
-            itemId:rects.length+lines.length+1
+            itemId: rects.length + lines.length + 1
         })
         this.init()
     }
