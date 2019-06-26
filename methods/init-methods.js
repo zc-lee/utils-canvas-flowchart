@@ -16,7 +16,7 @@ export default class Init {
             This[val] = this[metchKeys[key]].bind(this)
             console.warn(`window添加${key}:${this.checkAddMethodToWindow(val)}`)
         }
-        This.onkeydown = (e) => {
+        window.onkeydown = (e) => {
             // console.log('keydown:', e.key)
             if (e.key == 'Delete' || e.key == 'Backspace') {
                 this.delete(null)

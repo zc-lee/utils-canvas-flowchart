@@ -1,8 +1,8 @@
 export default {
-    addRect(x = this.options.flex, y = this.options.flex, width = 80, height = 100, id = this.itemId, title = 'title', text = "text") {
+    addRect(x = this.options.flex, y = this.options.flex, width = 80, height = 100, id = this.rectId, title = 'title', text = "text") {
         let rect = { x, y, width, height, id, title, text }
         this.rects.push(rect)
-        this.itemId++
+        this.rectId++;
         this.chooseItem = rect;
         this.draw()
     },
@@ -15,16 +15,16 @@ export default {
         })
     },
     drawRect() {
-        let { ctx, style } = this,
-            { flex } = this.options;
+        let { ctx, style, chooseItem } = this,
+            { flex, endId } = this.options;
         this.rects.forEach(e => {
             ctx.strokeStyle = style.rectColor;
             ctx.fillStyle = style.fillColor;
             ctx.fillRect(...Object.values(e))
             ctx.strokeRect(...Object.values(e));
-            this.drawText(`${e.id}-` + e.title, e.x + e.width / 2, e.y + flex+12, e.width - 2*flex, 1)
-            this.drawText(e.text, e.x + e.width / 2, e.y + e.height / 2, e.width - 2*flex, 2)
-            if (this.chooseItem && this.chooseItem.id == e.id) {
+            this.drawText(endId == e.id ? e.title : `${e.id}-` + e.title, e.x + e.width / 2, e.y + flex + 12, e.width - 2 * flex, 1)
+            this.drawText(e.text, e.x + e.width / 2, e.y + e.height / 2, e.width - 2 * flex, 2)
+            if (chooseItem && !this.typeIsLine(chooseItem) && chooseItem.id == e.id) {
                 ctx.strokeStyle = style.chooseColor
                 ctx.strokeRect(e.x - flex, e.y - flex, e.width + 2 * flex, e.height + 2 * flex);
             }

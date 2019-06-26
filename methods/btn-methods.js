@@ -2,7 +2,7 @@ export default {
     connect(e) {
         this.choose(e)
         let { lineFrom, chooseItem } = this
-        if (!chooseItem) return this.lineFrom = null;
+        if (!chooseItem || this.typeIsLine(chooseItem)) return this.lineFrom = null;
         if (!lineFrom) {
             this.lineFrom = chooseItem
         } else if (chooseItem.id == lineFrom.id) {
@@ -46,8 +46,8 @@ export default {
         this.btnState = key
         let btns = document.getElementsByClassName('canvas-btn')
         for (let i = 0; i < btns.length; i++) {
-            let background=btns[i].id==key?'#ccc':null;
-            btns[i].style.background=background
+            let background = btns[i].id == key ? '#ccc' : null;
+            btns[i].style.background = background
         }
     }
 }

@@ -26,9 +26,12 @@ export default {
         return line.from == rect.id || line.to == rect.id
     },
     dragging(e) {
-        let item = this.rects.find(v => v.id == this.chooseItem.id) || this.lines.find(v => v.id == this.chooseItem.id)
+        let {chooseItem,rects,lines}=this,
+        isLine=this.typeIsLine(chooseItem),
+        target=isLine?lines:rects,
+        item = target.find(v => v.id == chooseItem.id)
         if (!item) return;
-        this.typeIsLine(this.chooseItem) ? this.dragLine(e) : this.moveRect(e)
+        isLine? this.dragLine(e) : this.moveRect(e)
     },
     /**
      * @method

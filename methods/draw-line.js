@@ -11,8 +11,8 @@ export default {
         if (lines.some(v => (v.from == from && v.to == to) || (v.from == to && v.to == from))) {
             alert('exist')
         } else {
-            this.lines.push({ from, to, nodes: this.getInitLineNodes({ from, to }), id: this.itemId })
-            this.itemId++
+            this.lines.push({ from, to, nodes: this.getInitLineNodes({ from, to }), id: this.lineId })
+            this.lineId++
         }
         this.chooseItem = null;
         this.lineFrom = null
@@ -62,7 +62,7 @@ export default {
         ctx.lineJoin = style.lineJoin;
         ctx.lineCap = style.lineCap;
         lines.forEach(e => {
-            let isChoose = chooseItem && e.id == chooseItem.id,
+            let isChoose = chooseItem && this.typeIsLine(chooseItem) && e.id == chooseItem.id,
                 nodes = e.nodes
             nodes = nodes.filter(v => v)
             if (!nodes[0]) return;

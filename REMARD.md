@@ -60,6 +60,8 @@ new canvas({
         frame: 60,
         // 弹性距离
         flex: 6,
+        // 结束标签id 不显示编号
+        endId:999999999,
     },
     // 元素集合
     rects = [],
