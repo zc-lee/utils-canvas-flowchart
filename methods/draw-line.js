@@ -11,7 +11,7 @@ export default {
         if (lines.some(v => (v.from == from && v.to == to) || (v.from == to && v.to == from))) {
             alert('exist')
         } else {
-            this.lines.push({ from, to, nodes: this.getInitLineNodes({ from, to }), dots: [], id: this.itemId })
+            this.lines.push({ from, to, nodes: this.getInitLineNodes({ from, to }), id: this.itemId })
             this.itemId++
         }
         this.chooseItem = null;
