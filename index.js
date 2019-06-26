@@ -75,6 +75,8 @@ export default class Canvas extends Functions {
                 type: "2d",
                 // 使用默认按钮
                 useBtn: true,
+                // 自定义按钮传入添加按钮id可拖拽添加
+                addId:null,
                 // 线条拖拽
                 dragLine: true,
                 // 编辑
@@ -118,6 +120,7 @@ export default class Canvas extends Functions {
              */
             control: null,
             isDragging: false,
+            dragAdd:false,
             _lastTime: 0,
             _startXY: [0, 0],
             // 新增连接线

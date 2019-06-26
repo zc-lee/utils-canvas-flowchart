@@ -11,9 +11,12 @@ export default class Init {
             delete: 'deleteItem',
             connect: 'connectItem',
             choose: 'chooseOne'
-        }, { This } = this;
+        }, { This, options } = this;
         for (let [key, val] of Object.entries(this.methodsName)) {
             This[val] = this[metchKeys[key]].bind(this)
+            if (options.useBtn && This != window) {
+                window[val] = this[metchKeys[key]].bind(this)
+            }
             console.warn(`window添加${key}:${this.checkAddMethodToWindow(val)}`)
         }
         window.onkeydown = (e) => {
@@ -24,7 +27,7 @@ export default class Init {
         }
     }
     checkAddMethodToWindow(key) {
-        let {This}=this;
+        let { This } = this;
         return Object.keys(This).some(v => v == key)
     }
     /**
@@ -35,7 +38,7 @@ export default class Init {
         this.cid = this.createRandomId();
         let { cid } = this,
             { width, height, cssText, lineWidth, textBaseline, textAlign, font } = this.style,
-            { type, useBtn, edit } = this.options,
+            { type, useBtn, edit,addId } = this.options,
             btn = `
             <div style="display: flex;justify-content: space-around;text-align: center;margin: 0px;background-color: rgb(255, 255, 255);width: 450px;padding: 3px;border: 1px solid #aaa;font-size: 12px;">
             <span id='add' class="canvas-btn" onclick="add()">add</span>
@@ -48,7 +51,17 @@ export default class Init {
         <canvas id="${cid}" width="${width}" height="${height}">
             <p>浏览器不支持Canvas</p>
         </canvas>
-        `;
+        `,
+        addBtnMethod=(dom)=>{
+            dom.onmousedown=(e)=>{
+                e.preventDefault();
+                this.dragAdd=true
+            }
+            dom.onmouseup=(e)=>{
+                e.preventDefault();
+                this.dragAdd=false
+            }
+        };
         this.DOM.innerHTML = edit && useBtn ? btn + box : box;
         if (useBtn) {
             let btns = document.getElementsByClassName('canvas-btn')
@@ -61,7 +74,14 @@ export default class Init {
                 btns[i].onmouseout = () => {
                     btns[i].style.background = this.btnState == btns[i].id ? '#ccc' : null;
                 }
+                if(btns[i].id=='add'){
+                    addBtnMethod(btns[i])
+                }
             }
+        }
+        if(addId){
+            let addBtn=document.getElementById(addId)
+            addBtnMethod(addBtn)
         }
         let canvas = document.getElementById(cid)
         if (!canvas.getContext) {
