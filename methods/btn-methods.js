@@ -27,8 +27,7 @@ export default {
         if (!chooseItem) return;
         this.delItem()
     },
-    addItem(e) {
-        console.log(e)
+    addItem() {
         this.addRect()
     },
     deleteItem() {
