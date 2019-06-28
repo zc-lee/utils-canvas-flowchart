@@ -23,11 +23,14 @@ export default {
     delete(e) {
         if (e)
             this.choose(e)
-        let { chooseItem } = this;
+        let { chooseItem } = this,
+        {deleteStartEnd,startId,endId}=this.options;
         if (!chooseItem) return;
+        if(!deleteStartEnd&&!this.typeIsLine(chooseItem)&&(chooseItem.id==startId||chooseItem.id==endId))return console.warn('Pleace set options deleteStartEnd');
         this.delItem()
     },
-    addItem() {
+    addItem(e) {
+        console.log(e)
         this.addRect()
     },
     deleteItem() {

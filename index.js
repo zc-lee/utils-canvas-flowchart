@@ -85,6 +85,10 @@ export default class Canvas extends Functions {
                 frame: 60,
                 // 弹性距离
                 flex: 6,
+                // 删除开始结束
+                deleteStartEnd:false,
+                // 开始Id
+                startId:1,
                 // 结束标签id 不显示编号
                 endId:999999999,
             }, defaultMethods = {
@@ -126,8 +130,8 @@ export default class Canvas extends Functions {
             // 新增连接线
             lineFrom: null, // 有则[fromId,toId] 无则null 
             btnState: 'choose',
-            rectId:rects.filter(v=>v.id!=defaultOptions.endId).length + 1,
-            lineId:lines.length + 1
+            rectId:Math.max(rects.filter(v=>v.id!=defaultOptions.endId).map(v=>v.id))+1,
+            lineId:Math.max(lines.map(v=>v.id))+1
         })
         this.init()
     }
