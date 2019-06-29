@@ -20,6 +20,8 @@ new canvas({
     id = 'Canvas',
     // 函数注入目标 @click需注入this   onclick无需注入
     This = window,
+    // 弹框 弹框弹出时 关闭键盘删除事件
+    dialog:false,
     style = {
         width: 1000,
         height: 800,

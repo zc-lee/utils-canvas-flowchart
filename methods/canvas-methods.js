@@ -57,5 +57,6 @@ export default {
     },
     delItem(item = this.chooseItem) {
         this.typeIsLine(item) ? this.delLine(item) : this.delRect(item)
+        this.draw()
     }
 }

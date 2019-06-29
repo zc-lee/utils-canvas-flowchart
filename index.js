@@ -40,6 +40,8 @@ export default class Canvas extends Functions {
         id = 'Canvas',
         // 函数注入目标 @click需注入this   onclick无需注入
         This = window,
+        // 弹框 弹框弹出时 关闭键盘删除事件
+        dialog=false,
         style = {},
         // 自定义按钮注入事件名称
         methodsName = {},
@@ -52,7 +54,6 @@ export default class Canvas extends Functions {
         // 元素集合
         rects = [],
         lines = [],
-
     }) {
         super()
         let defaultStyle = {
@@ -103,6 +104,7 @@ export default class Canvas extends Functions {
         Object.assign(this, {
             id,
             This,
+            dialog,
             style: defaultStyle,
             options: defaultOptions,
             methodsName: defaultMethods,
