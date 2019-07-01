@@ -69,7 +69,11 @@ new canvas({
         // 开始Id
         startId:1,
         // 结束标签id 不显示编号
-        endId:999999999,
+        endId:2,
+        // 初始title
+        title:'',
+        // 初始text
+        text:'',
     },
     // 元素集合
     rects = [],

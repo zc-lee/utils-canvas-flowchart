@@ -92,6 +92,10 @@ export default class Canvas extends Functions {
                 startId:1,
                 // 结束标签id 不显示编号
                 endId:999999999,
+                // 初始title
+                title:'',
+                // 初始text
+                text:'',
             }, defaultMethods = {
                 add: 'add',
                 delete: 'del',
@@ -132,7 +136,7 @@ export default class Canvas extends Functions {
             // 新增连接线
             lineFrom: null, // 有则[fromId,toId] 无则null 
             btnState: 'choose',
-            rectId:Math.max(rects.filter(v=>v.id!=defaultOptions.endId).map(v=>v.id))+1,
+            rectId:Math.max(rects.map(v=>v.id))+1,
             lineId:Math.max(lines.map(v=>v.id))+1
         })
         this.init()
