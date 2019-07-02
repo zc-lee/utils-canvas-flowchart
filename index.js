@@ -136,8 +136,8 @@ export default class Canvas extends Functions {
             // 新增连接线
             lineFrom: null, // 有则[fromId,toId] 无则null 
             btnState: 'choose',
-            rectId:Math.max(rects.map(v=>v.id))+1,
-            lineId:Math.max(lines.map(v=>v.id))+1
+            rectId:Math.max(...rects.map(v=>v.id))+1,
+            lineId:Math.max(...lines.map(v=>v.id))+1
         })
         this.init()
     }
