@@ -64,6 +64,9 @@ export default {
         lines.forEach(e => {
             let isChoose = chooseItem && this.typeIsLine(chooseItem) && e.id == chooseItem.id,
                 nodes = e.nodes
+            if (!nodes) {
+                nodes = this.getInitLineNodes(e.form, e.to)
+            }
             nodes = nodes.filter(v => v)
             if (!nodes[0]) return;
             if (options.dragLine && isChoose) {
