@@ -20,8 +20,9 @@ export default {
         this.rects.forEach(e => {
             ctx.strokeStyle = style.rectColor;
             ctx.fillStyle = style.fillColor;
-            ctx.fillRect(...Object.values(e))
-            ctx.strokeRect(...Object.values(e));
+            let { x, y, width, height } = e
+            ctx.fillRect(x, y, width, height)
+            ctx.strokeRect(x, y, width, height);
             if (e.title)
                 this.drawText(endId == e.id ? e.title : `${e.id}-` + e.title, e.x + e.width / 2, e.y + flex + 12, e.width - 2 * flex, 1)
             if (e.text)

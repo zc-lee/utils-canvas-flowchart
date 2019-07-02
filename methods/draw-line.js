@@ -62,13 +62,9 @@ export default {
         ctx.lineJoin = style.lineJoin;
         ctx.lineCap = style.lineCap;
         lines.forEach(e => {
-            let isChoose = chooseItem && this.typeIsLine(chooseItem) && e.id == chooseItem.id,
-                nodes = e.nodes
-            if (!nodes) {
-                nodes = this.getInitLineNodes(e.form, e.to)
-            }
-            nodes = nodes.filter(v => v)
-            if (!nodes[0]) return;
+            e.nodes=e.nodes||this.getInitLineNodes(e)
+            let isChoose = chooseItem && this.typeIsLine(chooseItem) && e.id == chooseItem.id
+            if (!e.nodes[0]) return;
             if (options.dragLine && isChoose) {
                 ctx.fillStyle = style.chooseColor
                 this.getLineNodes(e).forEach(v => {
@@ -81,7 +77,7 @@ export default {
             }
             ctx.strokeStyle = ctx.fillStyle = isChoose ? style.chooseColor : style.lineColor
             ctx.beginPath();
-            nodes.forEach((v, i) => {
+            e.nodes.forEach((v, i) => {
                 ctx[i == 0 ? 'moveTo' : 'lineTo'](...v)
             })
             ctx.stroke();
