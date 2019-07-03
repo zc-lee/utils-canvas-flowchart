@@ -27,6 +27,7 @@ export default {
             { rects } = this,
             fromRect = rects.find(v => v.id == from),
             toRect = rects.find(v => v.id == to)
+        if (!fromRect || !toRect) return[];
         let startXY = [fromRect.x + fromRect.width / 2, fromRect.y + fromRect.height / 2],
             endXY = [toRect.x + toRect.width / 2, toRect.y + toRect.height / 2]
         return [this.getRectLineInt(fromRect, [startXY, endXY]), this.getRectLineInt(toRect, [startXY, endXY])]
@@ -62,7 +63,7 @@ export default {
         ctx.lineJoin = style.lineJoin;
         ctx.lineCap = style.lineCap;
         lines.forEach(e => {
-            e.nodes=e.nodes||this.getInitLineNodes(e)
+            e.nodes = e.nodes || this.getInitLineNodes(e)
             let isChoose = chooseItem && this.typeIsLine(chooseItem) && e.id == chooseItem.id
             if (!e.nodes[0]) return;
             if (options.dragLine && isChoose) {
