@@ -29,7 +29,7 @@ export default {
         if (!chooseItem) return;
         if (!deleteStartEnd && !this.typeIsLine(chooseItem) && (chooseItem.id == startId || chooseItem.id == endId)) return console.warn('Pleace set options deleteStartEnd');
         if (beforeDelete) {
-            await beforeDelete();
+            await beforeDelete(chooseItem);
         }
         this.delItem()
     },
