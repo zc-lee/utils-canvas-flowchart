@@ -20,13 +20,17 @@ export default {
         this.changePointer(e)
         this.draw();
     },
-    delete(e) {
+    async delete(e) {
         if (e)
             this.choose(e)
         let { chooseItem } = this,
+            { beforeDelete } = this.methods,
             { deleteStartEnd, startId, endId } = this.options;
         if (!chooseItem) return;
         if (!deleteStartEnd && !this.typeIsLine(chooseItem) && (chooseItem.id == startId || chooseItem.id == endId)) return console.warn('Pleace set options deleteStartEnd');
+        if (beforeDelete) {
+            await beforeDelete();
+        }
         this.delItem()
     },
     addItem() {

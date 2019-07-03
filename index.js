@@ -47,7 +47,8 @@ export default class Canvas extends Functions {
         methodsName = {},
         // 注入事件（双击事件）
         methods = {
-            dbClick: null
+            dbClick: null,
+            beforeDelete:null
         },
         // 设置颜色
         options = {},
