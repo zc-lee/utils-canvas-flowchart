@@ -41,14 +41,14 @@ export default class Canvas extends Functions {
         // 函数注入目标 @click需注入this   onclick无需注入
         This = window,
         // 弹框 弹框弹出时 关闭键盘删除事件
-        dialog=false,
+        dialog = false,
         style = {},
         // 自定义按钮注入事件名称
         methodsName = {},
         // 注入事件（双击事件）
         methods = {
             dbClick: null,
-            beforeDelete:null
+            beforeDelete: null
         },
         // 设置颜色
         options = {},
@@ -77,8 +77,14 @@ export default class Canvas extends Functions {
                 type: "2d",
                 // 使用默认按钮
                 useBtn: true,
+                // 按钮状体 点击后将一直处于该状态
+                btnState: {
+                    choose: true,
+                    delete: false,
+                    connect: false,
+                },
                 // 自定义按钮传入添加按钮id可拖拽添加
-                addId:null,
+                addId: null,
                 // 线条拖拽
                 dragLine: true,
                 // 编辑
@@ -88,15 +94,15 @@ export default class Canvas extends Functions {
                 // 弹性距离
                 flex: 6,
                 // 删除开始结束
-                deleteStartEnd:false,
+                deleteStartEnd: false,
                 // 开始Id
-                startId:1,
+                startId: 1,
                 // 结束标签id 不显示编号
-                endId:999999999,
+                endId: 999999999,
                 // 初始title
-                title:'',
+                title: '',
                 // 初始text
-                text:'',
+                text: '',
             }, defaultMethods = {
                 add: 'add',
                 delete: 'del',
@@ -131,16 +137,17 @@ export default class Canvas extends Functions {
              */
             control: null,
             isDragging: false,
-            dragAdd:false,
+            dragAdd: false,
             _lastTime: 0,
             _startXY: [0, 0],
             // 新增连接线
             lineFrom: null, // 有则[fromId,toId] 无则null 
             btnState: 'choose',
-            rectId:rects[0]?Math.max(...rects.map(v=>v.id))+1:1,
-            lineId:lines[0]?Math.max(...lines.map(v=>v.id))+1:1
+            rectId: 1,
+            lineId: lines[0] ? Math.max(...lines.map(v => v.id)) + 1 : 1
         })
-        this.init()
+        this.rectId = rects[0] ? Math.max(...rects.map(v => v.id).filter(v => v != this.options.endId)) + 1 : 1,
+            this.init()
     }
 }
 

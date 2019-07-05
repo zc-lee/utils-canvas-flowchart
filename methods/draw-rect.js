@@ -3,6 +3,8 @@ export default {
         let rect = { x, y, width, height, id, title, text }
         this.rects.push(rect)
         this.rectId++;
+        if(this.rectId==this.options.endId)
+        this.rectId++;
         this.chooseItem = rect;
         this.draw()
     },

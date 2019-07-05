@@ -9,6 +9,8 @@ export default {
             return
         } else {
             this.addLine(chooseItem.id)
+            if (!this.options.btnState.connect)
+            this.chooseOne()
         }
     },
     choose(e) {
@@ -37,6 +39,8 @@ export default {
         this.addRect()
     },
     deleteItem() {
+        if (!this.options.btnState.delete)
+            return this.delete()
         this.changeBtnState('delete')
     },
     connectItem() {

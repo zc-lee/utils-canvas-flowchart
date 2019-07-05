@@ -55,6 +55,12 @@ new canvas({
         type: "2d",
         // 使用默认按钮
         useBtn: true,
+        // 按钮状体 点击后将一直处于该状态
+        btnState:{
+            choose:true,
+            delete:false,
+            connect:false,
+        },
         // 自定义按钮传入添加按钮id可拖拽添加
         addId:null,
         // 线条拖拽
