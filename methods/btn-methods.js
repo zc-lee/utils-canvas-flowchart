@@ -4,25 +4,29 @@ export default {
         let { lineFrom, chooseItem } = this
         if (!chooseItem || this.typeIsLine(chooseItem)) return this.lineFrom = null;
         if (!lineFrom) {
-            let { fromEnd, from } = this.options.connectRule,
-            {endId}=this.options
-            if(!fromEnd&&chooseItem.id==endId)
-            return console.warn('from can`t be end node!!!')
-            if(!from)
-            return console.warn('from can`t match from rule!!!')
+            let { fromEnd, from, alertWarn } = this.options.connectRule,
+                { endId } = this.options,
+                warn = 'from can`t be end node!!!',
+                match = 'from can`t match from rule!!!'
+            if (!fromEnd && chooseItem.id == endId)
+                return alertWarn ? alert(warn) : console.warn(warn)
+            if (!from)
+                return alertWarn ? alert(match) : console.warn(match)
             this.lineFrom = chooseItem
         } else if (chooseItem.id == lineFrom.id) {
             return
         } else {
-            let { toStart, to } = this.options.connectRule,
-            {startId}=this.options
-            if(!toStart&&chooseItem.id==startId)
-            return console.warn('to can`t be start node!!!')
-            if(!to)
-            return console.warn('to can`t match to rule!!!')
+            let { toStart, to, alertWarn } = this.options.connectRule,
+                { startId } = this.options,
+                warn = 'to can`t be start node!!!',
+                match = 'to can`t match to rule!!!'
+            if (!toStart && chooseItem.id == startId)
+                return alertWarn ? alert(warn) : console.warn(warn)
+            if (!to)
+                return alertWarn ? alert(match) : console.warn(match)
             this.addLine(chooseItem.id)
             if (!this.options.btnState.connect)
-            this.chooseOne()
+                this.chooseOne()
         }
     },
     choose(e) {

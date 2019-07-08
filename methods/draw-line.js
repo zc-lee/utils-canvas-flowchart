@@ -9,7 +9,7 @@ export default {
         let from = this.lineFrom.id,
             lines = this.lines;
         if (lines.some(v => (v.from == from && v.to == to) || (v.from == to && v.to == from))) {
-            alert('exist')
+            alert('line has exist!!!')
         } else {
             this.lines.push({ from, to, nodes: this.getInitLineNodes({ from, to }), id: this.lineId })
             this.lineId++
