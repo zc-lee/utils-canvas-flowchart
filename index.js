@@ -83,6 +83,17 @@ export default class Canvas extends Functions {
                     delete: false,
                     connect: false,
                 },
+                // 连线规则
+                connectRule: {
+                    // 从结束节点开始
+                    fromEnd: false,
+                    // 指向开始节点
+                    toStart: false,
+                    // 起始规则函数 return boolean
+                    from: () => { return true },
+                    // 结束规则函数  return boolean
+                    to: () => { return true }
+                },
                 // 自定义按钮传入添加按钮id可拖拽添加
                 addId: null,
                 // 线条拖拽
