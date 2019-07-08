@@ -63,6 +63,8 @@ new canvas({
         },
         // 连线规则
         connectRule: {
+            // 弹窗警告
+            alertWarn: false,
             // 从结束节点开始
             fromEnd: false,
             // 指向开始节点
