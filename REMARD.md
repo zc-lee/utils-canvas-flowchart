@@ -55,11 +55,13 @@ new canvas({
         type: "2d",
         // 使用默认按钮
         useBtn: true,
+        // 点击空白初始化状态为选择
+        clickEmptyInit:true,
         // 按钮状体 点击后将一直处于该状态
         btnState:{
             choose:true,
-            delete:false,
-            connect:false,
+            delete:true,
+            connect:true,
         },
         // 连线规则
         connectRule: {

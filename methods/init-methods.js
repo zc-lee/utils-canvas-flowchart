@@ -17,7 +17,7 @@ export default class Init {
             if (options.useBtn && This != window) {
                 window[val] = this[metchKeys[key]].bind(this)
             }
-            console.warn(`window添加${key}:${this.checkAddMethodToWindow(val)}`)
+            // console.warn(`window添加${key}:${this.checkAddMethodToWindow(val)}`)
         }
         window.onkeydown = (e) => {
             // console.log('keydown:', e.key)

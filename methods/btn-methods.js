@@ -32,11 +32,15 @@ export default {
     choose(e) {
         this._startXY = this.getPointerXY(e)
         this.chooseItem = this.isItem(...this._startXY)
-        this.moveItemToEnd()
-        this.canMove = true;
         this.getControlType(...this._startXY)
         this.changePointer(e)
         this.draw();
+        if (this.chooseItem) {
+            this.moveItemToEnd()
+            this.canMove = true;
+        } else if (this.options.clickEmptyInit && this.btnState != 'choose') {
+            this.btnState = 'choose'
+        }
     },
     async delete(e) {
         if (e)
