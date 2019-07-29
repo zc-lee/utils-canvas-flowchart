@@ -1,10 +1,10 @@
 export default {
-    addRect(x = this.options.flex, y = this.options.flex, width = 80, height = 100, id = this.rectId, title = this.options.title, text = this.options.text) {
+    addRect(x = this.options.flex, y = this.options.flex, width = this.style.rectWidth, height = this.style.rectHeight, id = this.rectId, title = this.options.title, text = this.options.text) {
         let rect = { x, y, width, height, id, title, text }
         this.rects.push(rect)
         this.rectId++;
-        if(this.rectId==this.options.endId)
-        this.rectId++;
+        if (this.rectId == this.options.endId)
+            this.rectId++;
         this.chooseItem = rect;
         this.draw()
     },
@@ -19,6 +19,8 @@ export default {
     drawRect() {
         let { ctx, style, chooseItem } = this,
             { flex, endId } = this.options;
+        let { rectlineWidth } = this.style;
+        ctx.lineWidth = rectlineWidth;
         this.rects.forEach(e => {
             ctx.strokeStyle = style.rectColor;
             ctx.fillStyle = style.fillColor;

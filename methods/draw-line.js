@@ -60,6 +60,7 @@ export default {
     },
     drawLine() {
         let { ctx, lines, chooseItem, style, options } = this;
+        ctx.lineWidth = style.lineWidth;
         ctx.lineJoin = style.lineJoin;
         ctx.lineCap = style.lineCap;
         lines.forEach(e => {

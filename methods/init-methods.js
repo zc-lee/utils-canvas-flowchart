@@ -37,7 +37,7 @@ export default class Init {
     createCanvasDom() {
         this.cid = this.createRandomId();
         let { cid } = this,
-            { width, height, cssText, lineWidth, textBaseline, textAlign, font } = this.style,
+            { width, height, cssText, textBaseline, textAlign, font } = this.style,
             { type, useBtn, edit, addId } = this.options,
             btn = `
             <div style="display: flex;justify-content: space-around;text-align: center;margin: 0px;background-color: rgb(255, 255, 255);width: 450px;padding: 3px;border: 1px solid #aaa;font-size: 12px;">
@@ -95,7 +95,6 @@ export default class Init {
         this.canvas = canvas
         this.ctx = this.canvas.getContext(type)
         Object.assign(this.ctx, {
-            lineWidth,
             textBaseline,
             textAlign,
             font
